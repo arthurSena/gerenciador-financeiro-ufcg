@@ -1,4 +1,4 @@
-package com.name.gfp;
+package src.com.name.gfp;
 
 /***
  * Classe que Representa um debito do Usuário
