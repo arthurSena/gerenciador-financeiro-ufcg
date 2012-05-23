@@ -9,22 +9,21 @@ package src.com.name.gfp;
 
 public class Transacao {
 	
-	public String data;
-	public String descricao;
-	public double valor; //Duvida - Valor deveria ser final ?????
-	
-
-	public Transacao(String data, String descricao, double valor){
-		
-		this.descricao = descricao;
-		this.data = data;
-		this.valor = valor;
-	}
+	private String data;
+	private String descricao;
+	private double valor;
+	private int id; 
 	
 	public Transacao(String data, double valor){
 		this.data = data;
 		this.valor = valor;
-		
+		this.descricao = "";
+		this.id = geraID();
+	}
+
+	public Transacao(String data, String descricao, double valor){	
+		this(data, valor);
+		this.descricao = descricao;
 	}
 	
 	/**
@@ -55,4 +54,23 @@ public class Transacao {
 		return valor;
 	}
 
+	public void setData(String data) {
+		this.data = data;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	
+	public int getID(){
+		return this.id;
+	}
+	
+	private int geraID() {
+		return (int) (1+Math.random()*1000000);
+	}
 }
