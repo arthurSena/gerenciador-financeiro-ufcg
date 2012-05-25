@@ -11,16 +11,16 @@ public class Receita extends Transacao{
 	private Tipo tipo; 
 	
 	public Receita(String data, double valor, Tipo tipo){
-		//TODO Verificar se a data eh valida 
-		//TODO verificar se o valor eh valido
+		//TODO Verificar se a data eh valida -- (Tá em Transacao)
+		//TODO verificar se o valor eh valido -- (Tá em Transacao)
 		
 		super(data,valor);
 		this.tipo = tipo;
 	}
 
 	public Receita(String data, double valor, Tipo tipo, String descricao){
-		//TODO Verificar se a data eh valida 
-		//TODO verificar se o valor eh valido
+		//TODO Verificar se a data eh valida -- (Tá em Transacao)
+		//TODO verificar se o valor eh valido -- (Tá em Transacao)
 		
 		super(data,descricao,valor);
 		this.tipo = tipo;
