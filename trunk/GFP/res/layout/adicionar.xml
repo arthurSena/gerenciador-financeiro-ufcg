@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fundo"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+adicionar/textoDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="53dp"
+        android:text="  Descricao  "
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+adicionar/editTextDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+adicionar/despesacheck"
+        android:layout_alignRight="@+adicionar/receitacheck"
+        android:layout_below="@+telaprincipal/textoDescricao"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+adicionar/textoValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+adicionar/editTextDescricao"
+        android:layout_centerHorizontal="true"
+        android:text="Valor"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+adicionar/editTextValor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+adicionar/textoDescricao"
+        android:layout_alignRight="@+adicionar/textoDescricao"
+        android:layout_below="@+adicionar/textoValor"
+        android:inputType="numberDecimal" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+adicionar/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+adicionar/editTextValor"
+        android:layout_centerHorizontal="true"
+        android:text="Data"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <CheckBox
+        android:id="@+adicionar/receitacheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+adicionar/textoDescricao"
+        android:text="Receita" />
+
+    <EditText
+        android:id="@+adicionar/editTextData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+adicionar/editTextValor"
+        android:layout_alignRight="@+adicionar/editTextValor"
+        android:layout_below="@+adicionar/textView1"
+        android:inputType="date" />
+
+    <Spinner
+        android:id="@+adicionar/spinner1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+adicionar/editTextData"
+        android:layout_alignRight="@+adicionar/editTextData"
+        android:layout_below="@+adicionar/editTextData" />
+
+    <CheckBox
+        android:id="@+telaprincipal/despesacheck"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+telaprincipal/textoValor"
+        android:text="Despesa" />
+
+    <Button
+        android:id="@+adicionar/btAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+adicionar/editTextData"
+        android:layout_alignRight="@+adicionar/spinner1"
+        android:layout_below="@+adicionar/spinner1"
+        android:layout_marginTop="33dp"
+        android:text="  Adicionar  " />
+
+</RelativeLayout>

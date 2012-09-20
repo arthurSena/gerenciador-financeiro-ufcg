@@ -1,4 +1,4 @@
-package src.com.name.gfp;
+package com.name.gfp;
 
 /***
  * Classe que Representa um debito do Usuário
@@ -18,7 +18,7 @@ public class Despesa extends Transacao{
 	private Tipo tipo;
 	private int numeroDeParcelas = 0;
 	
-	public Despesa(String data, double valor, Tipo tipo, Categoria categoria){
+	public Despesa(String data, double valor, Tipo tipo, Categoria categoria) throws Exception{
 		//TODO Verificar se a data eh valida -- (Tá em Transacao)
 		//TODO verificar se o valor eh valido -- (Tá em Transacao)
 		
@@ -27,7 +27,7 @@ public class Despesa extends Transacao{
 		this.categoria = categoria;
 	}
 	
-	public Despesa(String data, double valor, Tipo tipo, Categoria categoria, String descricao){
+	public Despesa(String data, double valor, Tipo tipo, Categoria categoria, String descricao) throws Exception{
 		//TODO Verificar se a data eh valida -- (Tá em Transacao)
 		//TODO verificar se o valor eh valido -- (Tá em Transacao)
 		

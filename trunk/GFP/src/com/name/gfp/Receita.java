@@ -1,4 +1,4 @@
-package src.com.name.gfp;
+package com.name.gfp;
 
 /***
  * Classe que Representa uma determinada Renda do Usuário
@@ -10,7 +10,7 @@ public class Receita extends Transacao{
 	
 	private Tipo tipo; 
 	
-	public Receita(String data, double valor, Tipo tipo){
+	public Receita(String data, double valor, Tipo tipo) throws Exception{
 		//TODO Verificar se a data eh valida -- (Tá em Transacao)
 		//TODO verificar se o valor eh valido -- (Tá em Transacao)
 		
@@ -18,7 +18,7 @@ public class Receita extends Transacao{
 		this.tipo = tipo;
 	}
 
-	public Receita(String data, double valor, Tipo tipo, String descricao){
+	public Receita(String data, double valor, Tipo tipo, String descricao) throws Exception{
 		//TODO Verificar se a data eh valida -- (Tá em Transacao)
 		//TODO verificar se o valor eh valido -- (Tá em Transacao)
 		
