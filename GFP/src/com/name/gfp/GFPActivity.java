@@ -1,4 +1,4 @@
-package src.com.name.gfp;
+package com.name.gfp;
 
 
 import android.R;
@@ -11,7 +11,7 @@ public class GFPActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        
         
       
     }

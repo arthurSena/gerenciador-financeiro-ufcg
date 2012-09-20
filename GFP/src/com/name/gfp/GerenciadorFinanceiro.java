@@ -1,4 +1,4 @@
-package src.com.name.gfp;
+package com.name.gfp;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,7 +30,7 @@ public class GerenciadorFinanceiro {
 		return listaDeTransacoes;
 	}
 	
-	public boolean adicionarDespesa(String data, double valor, String descricao, Tipo tipo, Categoria categoria, int numeroDeParcelas){
+	public boolean adicionarDespesa(String data, double valor, String descricao, Tipo tipo, Categoria categoria, int numeroDeParcelas) throws Exception{
 		Despesa addDespesa = new Despesa(data, valor, tipo, categoria, descricao);
 		addDespesa.setNumeroDeParcelas(numeroDeParcelas);
 		
@@ -38,7 +38,7 @@ public class GerenciadorFinanceiro {
 	}
 	
 	
-	public boolean adicionarReceita(String data, double valor, Tipo tipo, String descricao){
+	public boolean adicionarReceita(String data, double valor, Tipo tipo, String descricao) throws Exception{
 		Receita addReceita = new Receita(data, valor, tipo, descricao);
 		
 		return listaDeTransacoes.add(addReceita);

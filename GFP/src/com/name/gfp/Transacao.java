@@ -1,4 +1,4 @@
-package src.com.name.gfp;
+package com.name.gfp;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
