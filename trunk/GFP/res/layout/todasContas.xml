@@ -34,5 +34,11 @@
         android:layout_marginLeft="45dp"
         android:layout_toRightOf="@+id/todasContasContasReceber"
         android:text="Pagar" />
+    
+     <TableRow
+          android:id="@+main/linha1"	
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content">  
+     </TableRow>
 
 </RelativeLayout>
