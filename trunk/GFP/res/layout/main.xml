@@ -22,5 +22,22 @@
         android:layout_marginBottom="54dp"
         android:text="Mes sendo visualizado"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TableLayout
+        android:id="@+main/tabela"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+main/spinner1" >
+
+        <TableRow
+            android:id="@+main/linha1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+        </TableRow>
+
+    </TableLayout>
 
 </RelativeLayout>
