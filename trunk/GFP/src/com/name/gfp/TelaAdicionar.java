@@ -19,52 +19,27 @@ import android.widget.TextView;
 
 
 
-public class GFPActivity extends Activity {
+public class TelaAdicionar extends Activity {
     /** Called when the activity is first created. */
 
 
 	 @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
-	        setContentView(R.layout.main);
-	        
-	        /* Find Tablelayout defined in main.xml */
-			TableLayout tl = (TableLayout) findViewById(R.main.tabela);
+	        setContentView(R.layout.adicionar);
 			
 			
-			TextView t1 = new TextView(this);
-			t1.setText("      Descricao   ");
-			TextView t2 = new TextView(this);
-			t2.setText("      Categoria   ");
-			TextView t3 = new TextView(this);
-			t3.setText("         Valor");
+			//Mudaca de telas Adicionar - Main 
 			
-			TableRow tr = (TableRow) findViewById(R.main.linha1);
-			tr.addView(t1);
-			tr.addView(t2);
-			tr.addView(t3);
+			Button voltar = (Button) findViewById (R.id.voltarTelaMain);
 			
-			
-			//Spinner 
-			
-			Spinner sp = (Spinner) findViewById(R.main.spinner1);
-			ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-					this, R.array.itens, android.R.layout.simple_spinner_item);
-			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			
-			sp.setAdapter(adapter);
-			
-			
-			//Mudaca de telas Main-Adicionar 
-			
-			Button adicionar = (Button) findViewById (R.id.adicionar);
-			
-			adicionar.setOnClickListener(new View.OnClickListener() {
+			voltar.setOnClickListener(new View.OnClickListener() {
 				
 				public void onClick(View v) {
-					Intent trocatela = new Intent(GFPActivity.this,TelaAdicionar.class);
-					GFPActivity.this.startActivity(trocatela);
-					GFPActivity.this.finish();
+					Intent trocatela = new Intent(TelaAdicionar.this, GFPActivity.class);
+					TelaAdicionar.this.startActivity(trocatela);
+					TelaAdicionar.this.finish();
+					
 				}
 			});
 					 

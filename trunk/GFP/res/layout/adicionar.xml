@@ -95,5 +95,15 @@
         android:layout_below="@+adicionar/spinner1"
         android:layout_marginTop="33dp"
         android:text="  Adicionar  " />
+
+    <Button
+        android:id="@+id/voltarTelaMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+adicionar/btAdd"
+        android:layout_alignBottom="@+adicionar/btAdd"
+        android:layout_alignLeft="@+adicionar/receitacheck"
+        android:layout_alignRight="@+adicionar/editTextDescricao"
+        android:text="Voltar" />
 
 </RelativeLayout>

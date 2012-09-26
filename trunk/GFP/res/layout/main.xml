@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    android:layout_width="wrap_content"
     android:layout_height="fill_parent"
-    android:orientation="vertical" 
-    android:background="@drawable/fundo2">
+    android:background="@drawable/fundo2"
+    android:gravity="center"
+    android:orientation="vertical" >
 
     <Spinner
         android:id="@+main/spinner1"
@@ -22,7 +23,7 @@
         android:layout_marginBottom="54dp"
         android:text="Mes sendo visualizado"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
     <TableLayout
         android:id="@+main/tabela"
         android:layout_width="wrap_content"
@@ -35,8 +36,15 @@
         <TableRow
             android:id="@+main/linha1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" >
+            android:layout_height="0dp"
+            android:layout_weight="1" >
         </TableRow>
+
+        <Button
+            android:id="@+id/adicionar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adicionar" />
 
     </TableLayout>
 
