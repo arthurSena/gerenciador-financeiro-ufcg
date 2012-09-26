@@ -22,6 +22,9 @@
         
          <activity android:name=".GFPActivity" >
         </activity>
+        
+          <activity android:name=".TelaAdicionar" >
+        </activity>
 
     </application>
 
