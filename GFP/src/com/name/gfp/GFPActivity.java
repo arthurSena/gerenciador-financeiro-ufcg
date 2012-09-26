@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.widget.TableRow;
 
 import android.view.ViewGroup.LayoutParams;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -39,7 +41,15 @@ public class GFPActivity extends Activity {
 			tr.addView(t2);
 			tr.addView(t3);
 			
-
+			
+			//Spinner 
+			
+			Spinner sp = (Spinner) findViewById(R.main.spinner1);
+			ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
+					this, R.array.itens, android.R.layout.simple_spinner_item);
+			adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			
+			sp.setAdapter(adapter);
 			
 //			TableRow tr1 = new TableRow(this);
 //			tr1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
