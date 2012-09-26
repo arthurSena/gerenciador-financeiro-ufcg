@@ -3,6 +3,14 @@
 
     <string name="hello">Hello World, GFPActivity!</string>
     <string name="app_name">GFP</string>
+    <string name="descricao">Descricao</string>
+    <string name="valor">Valor</string>
+    <string name="data">Data</string>
+    <string name="receita">Receita</string>
+    <string name="despesa">Despesa</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="voltar">Voltar</string>
+     <string name="mesvisualizado">Mes sendo visualizado</string>
     <string-array name="itens">
         <item>Janeiro</item>
         <item>Fevereiro</item>

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
     android:background="@drawable/fundo"
+    android:gravity="center"
     android:orientation="vertical" >
 
     <TextView
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="53dp"
-        android:text="  Descricao  "
+        android:text="@string/descricao"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -29,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+adicionar/editTextDescricao"
         android:layout_centerHorizontal="true"
-        android:text="Valor"
+        android:text="@string/valor"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
@@ -50,7 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+adicionar/editTextValor"
         android:layout_centerHorizontal="true"
-        android:text="Data"
+        android:text="@string/data"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <CheckBox
@@ -59,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+adicionar/textoDescricao"
-        android:text="Receita" />
+        android:text="@string/receita" /> 
 
     <EditText
         android:id="@+adicionar/editTextData"
@@ -84,7 +85,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+telaprincipal/textoValor"
-        android:text="Despesa" />
+        android:text="@string/despesa" /> 
 
     <Button
         android:id="@+adicionar/btAdd"
@@ -94,7 +95,7 @@
         android:layout_alignRight="@+adicionar/spinner1"
         android:layout_below="@+adicionar/spinner1"
         android:layout_marginTop="33dp"
-        android:text="  Adicionar  " />
+        android:text="@string/adicionar" />
 
     <Button
         android:id="@+id/voltarTelaMain"
@@ -104,6 +105,6 @@
         android:layout_alignBottom="@+adicionar/btAdd"
         android:layout_alignLeft="@+adicionar/receitacheck"
         android:layout_alignRight="@+adicionar/editTextDescricao"
-        android:text="Voltar" />
+        android:text="@string/voltar" />
 
 </RelativeLayout>

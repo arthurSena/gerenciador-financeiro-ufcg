@@ -21,7 +21,7 @@
         android:layout_alignBottom="@+main/spinner1"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="54dp"
-        android:text="Mes sendo visualizado"
+        android:text="@string/mesvisualizado"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TableLayout
@@ -44,7 +44,7 @@
             android:id="@+id/adicionar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Adicionar" />
+            android:text="@string/adicionar" />
 
     </TableLayout>
 

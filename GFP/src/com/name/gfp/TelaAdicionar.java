@@ -2,25 +2,26 @@ package com.name.gfp;
 
 
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
-import android.widget.TableRow;
+import android.os.Environment;
 
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
-import android.widget.TableLayout;
-import android.widget.TableRow;
-import android.widget.TextView;
 
+import com.thoughtworks.xstream.XStream;  
 
 
 public class TelaAdicionar extends Activity {
     /** Called when the activity is first created. */
+	
+	XStream xstream = new XStream(); 
+	GerenciadorFinanceiro gerenciador =  new GerenciadorFinanceiro();
 
 
 	 @Override
@@ -39,6 +40,27 @@ public class TelaAdicionar extends Activity {
 					Intent trocatela = new Intent(TelaAdicionar.this, GFPActivity.class);
 					TelaAdicionar.this.startActivity(trocatela);
 					TelaAdicionar.this.finish();
+					
+				}
+			});
+			
+			//Adicionando na lista.
+			
+			Button btAdd = (Button) findViewById(R.id.adicionar);
+			
+			btAdd.setOnClickListener(new View.OnClickListener() {
+				
+				public void onClick(View arg0) {
+					// TODO pegar as coisas e criar o objeto e adicionar em gereciador
+					 BufferedWriter writer;
+					try {
+							writer = new BufferedWriter(new FileWriter( Environment.getExternalStorageDirectory().getName() + "/"+ "pessoa.xml"));
+							String func = xstream.toXML("passar aqui o objeto criado ou atualizado");
+							writer.write(func);
+							writer.close();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					
 				}
 			});
