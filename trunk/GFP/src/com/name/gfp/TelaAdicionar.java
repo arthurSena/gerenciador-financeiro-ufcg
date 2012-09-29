@@ -32,21 +32,21 @@ public class TelaAdicionar extends Activity {
 			
 			//Mudaca de telas Adicionar - Main 
 			
-			Button voltar = (Button) findViewById (R.id.voltarTelaMain);
-			
-			voltar.setOnClickListener(new View.OnClickListener() {
-				
-				public void onClick(View v) {
-					Intent trocatela = new Intent(TelaAdicionar.this, GFPActivity.class);
-					TelaAdicionar.this.startActivity(trocatela);
-					TelaAdicionar.this.finish();
-					
-				}
-			});
+//			Button voltar = (Button) findViewById (R.adicionar.voltarTelaMain);
+//			
+//			voltar.setOnClickListener(new View.OnClickListener() {
+//				
+//				public void onClick(View v) {
+//					Intent trocatela = new Intent(TelaAdicionar.this, GFPActivity.class);
+//					TelaAdicionar.this.startActivity(trocatela);
+//					TelaAdicionar.this.finish();
+//					
+//				}
+//			});
 			
 			//Adicionando na lista.
 			
-			Button btAdd = (Button) findViewById(R.id.adicionar);
+			Button btAdd = (Button) findViewById(R.adicionar.btAdd);
 			
 			btAdd.setOnClickListener(new View.OnClickListener() {
 				
