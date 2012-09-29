@@ -3,6 +3,7 @@ package com.name.gfp;
 
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -55,14 +56,17 @@ public class GFPActivity extends Activity {
 			
 			//Mudaca de telas Main-Adicionar 
 			
-			Button adicionar = (Button) findViewById (R.id.adicionar);
+			Button adicionar = (Button) findViewById (R.main.adicionar);
 			
 			adicionar.setOnClickListener(new View.OnClickListener() {
 				
 				public void onClick(View v) {
 					Intent trocatela = new Intent(GFPActivity.this,TelaAdicionar.class);
 					GFPActivity.this.startActivity(trocatela);
-					GFPActivity.this.finish();
+//					GFPActivity.this.finish();
+//					Intent i = new Intent(getApplicationContext(),TelaAdicionar.class);
+//					startActivity(i);
+					//finish();
 				}
 			});
 					 
