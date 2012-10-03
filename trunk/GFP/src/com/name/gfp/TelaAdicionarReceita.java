@@ -26,7 +26,7 @@ import com.thoughtworks.xstream.XStream;
 public class TelaAdicionarReceita extends Activity {
     /** Called when the activity is first created. */
 	
-	XStream xstream = new XStream(); 
+	//XStream xstream = new XStream(); 
 	GerenciadorFinanceiro gerenciador;
 
 	
@@ -62,7 +62,6 @@ public class TelaAdicionarReceita extends Activity {
 							gerenciador.adicionarReceita(data, valor, Tipo.FIXO, descricao);
 							imprimirMensagem("Transacao Adicionada com Sucesso !!!", "Ops...");
 						} catch (Exception e) {
-							imprimirMensagem("Transacao Adicionada com Sucesso !!!", "Ops...");
 							imprimirMensagem(e.getMessage(), "Ops...");
 						}
 						

@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/fundo"
     android:orientation="vertical" >
-
+
     <LinearLayout
         android:id="@+adicionar/linearLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.91"
         android:orientation="vertical" >
+
     </LinearLayout>
 
     <!-- <Spinner -->
@@ -30,83 +31,80 @@
     <!-- android:layout_below="@+adicionar/editTextDescricao" -->
     <!-- android:text="      Tipo" -->
     <!-- android:textAppearance="?android:attr/textAppearanceMedium" /> -->
-
-    <TextView
-        android:id="@+adicionar/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Valor"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+adicionar/btAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Adicionar" />
 
-    <EditText
-        android:id="@+adicionar/valor"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+adicionar/textoData"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+adicionar/textoDespesa"
-        android:layout_alignRight="@+adicionar/textoDespesa"
-        android:layout_below="@+adicionar/textView1"
-        android:inputType="numberDecimal" />
-
+        android:text="                          Data"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <EditText
-        android:id="@+adicionar/editTextDescricao"
-        android:layout_width="wrap_content"
+        android:id="@+adicionar/editTextData"
+        android:layout_width="154dp"
         android:layout_height="wrap_content"
-        android:layout_above="@+adicionar/textView1"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true" />
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:inputType="date" >
 
+        <requestFocus />
+    </EditText>
+
     <TextView
         android:id="@+adicionar/textoDespesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+adicionar/editTextDescricao"
-        android:layout_alignLeft="@+adicionar/btAdd"
+        android:layout_gravity="center_horizontal"
         android:text="Descricao"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+adicionar/editTextDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+adicionar/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Valor"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+adicionar/valor"
+        android:layout_width="60dp"
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+adicionar/textoTipo"
+        android:layout_width="51dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Tipo"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Spinner
         android:id="@+adicionar/spinnerTipo"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+adicionar/btAdd"
-        android:layout_alignRight="@+adicionar/btAdd"
-        android:layout_marginBottom="30dp" />
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:layout_weight="1" />
 
-    <EditText
-        android:id="@+adicionar/editTextData"
+    <Button
+        android:id="@+adicionar/btAdd"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+adicionar/textoDespesa"
-        android:layout_alignLeft="@+adicionar/valor"
-        android:layout_alignRight="@+adicionar/textoDespesa"
-        android:inputType="date" />
+        android:layout_height="0dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:text="Adicionar" />
 
-    <TextView
-        android:id="@+adicionar/textoData"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+adicionar/editTextData"
-        android:layout_alignParentLeft="true"
-        android:text="                          Data"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+adicionar/textoTipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+adicionar/spinnerTipo"
-        android:layout_alignRight="@+adicionar/textView1"
-        android:text="Tipo"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-</RelativeLayout>
+</LinearLayout>
