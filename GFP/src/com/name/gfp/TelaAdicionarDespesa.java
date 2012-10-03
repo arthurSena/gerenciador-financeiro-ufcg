@@ -14,7 +14,7 @@ import android.widget.Spinner;
 
 public class TelaAdicionarDespesa extends Activity {
 
-	XStream xstream = new XStream();
+	//XStream xstream = new XStream();
 	GerenciadorFinanceiro gerenciador;
 
 	public void imprimirMensagem(String Caption, String Title) {
@@ -56,7 +56,7 @@ public class TelaAdicionarDespesa extends Activity {
 		
 		btAdd.setOnClickListener(new View.OnClickListener() {
 			
-			@Override
+			
 			public void onClick(View v) {
 				
 				String data = ((EditText) findViewById(R.adicionarDespesa.editTextData)).getText().toString();
