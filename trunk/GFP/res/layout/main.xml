@@ -23,28 +23,38 @@
         android:layout_marginBottom="54dp"
         android:text="@string/mesvisualizado"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
     <TableLayout
         android:id="@+main/tabela"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_above="@+main/adicionarReceita"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_below="@+main/spinner1" >
 
         <TableRow
-            android:id="@+main/linha1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1" >
+        android:id="@+main/linha1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
         </TableRow>
-       <Button
-            android:id="@+main/adicionar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/adicionar" />
 
     </TableLayout>
+
+    <Button
+        android:id="@+main/adicionarReceita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Adicionar Receita" />
+
+    <Button
+        android:id="@+main/adicionarDespesa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="Adicionar Despesa" />
 
 </RelativeLayout>

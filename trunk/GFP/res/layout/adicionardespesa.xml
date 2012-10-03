@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/fundo3"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+adicionarDespesa/linearLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="" />
+    </LinearLayout>
+
+    <!-- <Spinner -->
+    <!-- android:id="@+adicionar/spinnerTipo" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_alignRight="@+adicionar/editTextDescricao" -->
+    <!-- android:layout_below="@+adicionar/textView1" /> -->
+
+
+    <!-- <TextView -->
+    <!-- android:id="@+id/textoTipo" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_alignLeft="@+adicionar/receitacheck" -->
+    <!-- android:layout_below="@+adicionar/editTextDescricao" -->
+    <!-- android:text="      Tipo" -->
+    <!-- android:textAppearance="?android:attr/textAppearanceMedium" /> -->
+
+    <TextView
+        android:id="@+adicionarDespesa/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Valor"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+adicionarDespesa/btAdd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Adicionar" />
+
+    <EditText
+        android:id="@+adicionarDespesa/valor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+adicionarDespesa/textoDespesa"
+        android:layout_alignRight="@+adicionarDespesa/textoDespesa"
+        android:layout_below="@+adicionarDespesa/textView1"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+adicionarDespesa/editTextDescricao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+adicionarDespesa/textView1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <TextView
+        android:id="@+adicionarDespesa/textoDespesa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+adicionarDespesa/editTextDescricao"
+        android:layout_alignLeft="@+adicionarDespesa/btAdd"
+        android:text="Descricao"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+adicionarDespesa/editTextData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+adicionarDespesa/textoDespesa"
+        android:layout_alignLeft="@+adicionarDespesa/valor"
+        android:layout_alignRight="@+adicionarDespesa/textoDespesa"
+        android:inputType="date" />
+
+    <TextView
+        android:id="@+adicionarDespesa/textoData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+adicionarDespesa/editTextData"
+        android:layout_alignParentLeft="true"
+        android:text="                          Data"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+adicionarDespesa/spinnerTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+adicionarDespesa/textView1"
+        android:layout_toRightOf="@+adicionarDespesa/btAdd" />
+
+    <TextView
+        android:id="@+adicionarDespesa/textoCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+adicionarDespesa/valor"
+        android:layout_toLeftOf="@+adicionarDespesa/valor"
+        android:text="Categoria"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Spinner
+        android:id="@+adicionarDespesa/spinnerCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+adicionarDespesa/textoCategoria"
+        android:layout_alignTop="@+adicionarDespesa/valor" />
+
+    <TextView
+        android:id="@+adicionarDespesa/textoTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+adicionarDespesa/editTextDescricao"
+        android:layout_toRightOf="@+adicionarDespesa/valor"
+        android:text="  Tipo"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+adicionarDespesa/textParcelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+adicionarDespesa/valor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:text="Numero de Parcelas"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+adicionarDespesa/editTextParcelas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+adicionarDespesa/btAdd"
+        android:layout_alignRight="@+adicionarDespesa/valor"
+        android:layout_below="@+adicionarDespesa/textParcelas"
+        android:inputType="number" >
+
+        <requestFocus />
+    </EditText>
+
+</RelativeLayout>

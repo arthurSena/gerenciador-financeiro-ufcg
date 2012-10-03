@@ -3,6 +3,7 @@ package com.name.gfp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.io.Serializable;
 
 /**
  * Classe responsavel pelo gerenciamento financeiro do usuario
@@ -10,7 +11,8 @@ import java.util.List;
  * @author ARTHUR SENA, RODOLFO LIMA, BRUNNA AMORIM, ELIAS PAULINO
  */
 
-public class GerenciadorFinanceiro {
+@SuppressWarnings("serial")
+public class GerenciadorFinanceiro implements Serializable {
 	
 	List<Transacao> listaDeTransacoes;
 	
@@ -30,7 +32,7 @@ public class GerenciadorFinanceiro {
 		return listaDeTransacoes;
 	}
 	
-	public boolean adicionarDespesa(String data, double valor, String descricao, Tipo tipo, Categoria categoria, int numeroDeParcelas) throws Exception{
+	public boolean adicionarDespesa(String data, double valor, String descricao, Tipo tipo, String categoria, int numeroDeParcelas) throws Exception{
 		Despesa addDespesa = new Despesa(data, valor, tipo, categoria, descricao);
 		addDespesa.setNumeroDeParcelas(numeroDeParcelas);
 		
