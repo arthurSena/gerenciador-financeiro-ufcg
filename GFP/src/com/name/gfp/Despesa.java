@@ -14,11 +14,11 @@ public class Despesa extends Transacao{
 	 *axo q o mais correto seria usar ENUM, mas eu nao lembro como eh q usa =\...
 	 */
 	
-	private Categoria categoria; 
+	private String categoria; 
 	private Tipo tipo;
 	private int numeroDeParcelas = 0;
 	
-	public Despesa(String data, double valor, Tipo tipo, Categoria categoria) throws Exception{
+	public Despesa(String data, double valor, Tipo tipo, String categoria) throws Exception{
 		//TODO Verificar se a data eh valida -- (Tá em Transacao)
 		//TODO verificar se o valor eh valido -- (Tá em Transacao)
 		
@@ -27,7 +27,7 @@ public class Despesa extends Transacao{
 		this.categoria = categoria;
 	}
 	
-	public Despesa(String data, double valor, Tipo tipo, Categoria categoria, String descricao) throws Exception{
+	public Despesa(String data, double valor, Tipo tipo, String categoria, String descricao) throws Exception{
 		//TODO Verificar se a data eh valida -- (Tá em Transacao)
 		//TODO verificar se o valor eh valido -- (Tá em Transacao)
 		
@@ -41,7 +41,7 @@ public class Despesa extends Transacao{
 	 * @return
 	 *        Categoria do Debito
 	 */
-	public Categoria getCategoria() {
+	public String getCategoria() {
 		return categoria;
 	}
 	
@@ -49,7 +49,7 @@ public class Despesa extends Transacao{
 	 * Altera a Categoria do Débito  
 	 * @param categoria
 	 */
-	public void setCategoria(Categoria categoria) {
+	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
 

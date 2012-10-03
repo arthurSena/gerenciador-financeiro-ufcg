@@ -25,5 +25,22 @@
         <item>Novembro</item>
         <item>Dezembro</item>
     </string-array>
-
+    
+     <string-array name="categorias">
+        <item>Alimentacao</item>
+        <item>Lazer</item>
+        <item>Moradia</item>
+        <item>Salario</item>
+        <item>Saude</item>
+        <item>Transporte</item>
+        <item>Outros</item>
+    </string-array>
+    
+     
+     
+     <string-array name="tipo">
+        <item>Fixo</item>
+        <item>Mensalmente</item>
+        <item>Unico</item>
+    </string-array>
 </resources>

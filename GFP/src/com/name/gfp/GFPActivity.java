@@ -20,6 +20,10 @@ import android.widget.TextView;
 
 public class GFPActivity extends Activity {
     /** Called when the activity is first created. */
+	
+	
+	
+	GerenciadorFinanceiro gerFin = new GerenciadorFinanceiro();
 
 
 	 @Override
@@ -56,19 +60,32 @@ public class GFPActivity extends Activity {
 			
 			//Mudaca de telas Main-Adicionar 
 			
-			Button adicionar = (Button) findViewById (R.main.adicionar);
+			Button adicionarReceita = (Button) findViewById (R.main.adicionarReceita);
 			
-			adicionar.setOnClickListener(new View.OnClickListener() {
+			adicionarReceita.setOnClickListener(new View.OnClickListener() {
 				
 				public void onClick(View v) {
-					Intent trocatela = new Intent(GFPActivity.this,TelaAdicionar.class);
+					Intent trocatela = new Intent(GFPActivity.this,TelaAdicionarReceita.class);
+					trocatela.putExtra("GerenciadorObj",gerFin);
+					trocatela.putExtra("receita", true);
 					GFPActivity.this.startActivity(trocatela);
-//					GFPActivity.this.finish();
-//					Intent i = new Intent(getApplicationContext(),TelaAdicionar.class);
-//					startActivity(i);
-					//finish();
 				}
 			});
+			
+			Button adicionarDespesa = (Button) findViewById (R.main.adicionarDespesa);
+			
+			adicionarDespesa.setOnClickListener(new View.OnClickListener() {
+				
+				public void onClick(View v) {
+					Intent trocatela = new Intent(GFPActivity.this,TelaAdicionarDespesa.class);
+					trocatela.putExtra("GerenciadorObj",gerFin);
+					trocatela.putExtra("receita", false);
+					GFPActivity.this.startActivity(trocatela);
+				}
+			});
+			
+			
+			
 					 
 			
 //			TableRow tr1 = new TableRow(this);
