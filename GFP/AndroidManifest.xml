@@ -20,24 +20,28 @@
         </activity>
         
         
-         <activity android:name=".TelaAdicionarDespesa" >
-        </activity>
-        
-          <activity android:name=".TelaAdicionarReceita" >
-        </activity>
         
         
-         <activity android:name=".GFPActivity" >
+            
+    <activity
+            android:name=".GFPActivity">
+            
+            </activity>
+    
+    
+  <activity android:name=".TelaAdicionarDespesa" >
         </activity>
+  
+    <activity android:name=".TelaAdicionarReceita" >
+  </activity>
+  
         
-          <activity android:name=".TelaAdicionar" >
-        </activity>
-
+        
+        
+        
     </application>
+    
 
+    
+    
 </manifest>
-
-
-
-
-

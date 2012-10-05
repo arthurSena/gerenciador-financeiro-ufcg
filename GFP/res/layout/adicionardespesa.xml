@@ -89,67 +89,30 @@
         android:layout_alignRight="@+adicionarDespesa/textoDespesa"
         android:inputType="date" />
 
+    <Spinner
+        android:id="@+adicionarDespesa/spinnerCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+adicionarDespesa/btAdd"
+        android:layout_alignLeft="@+adicionarDespesa/btAdd"
+        android:layout_marginBottom="38dp" />
+
+    <TextView
+        android:id="@+adicionarDespesa/textoCategoria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+adicionarDespesa/spinnerCategoria"
+        android:layout_alignLeft="@+adicionarDespesa/spinnerCategoria"
+        android:text="Categoria"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
     <TextView
         android:id="@+adicionarDespesa/textoData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+adicionarDespesa/editTextData"
         android:layout_alignParentLeft="true"
-        android:text="                          Data"
+        android:text="                             Data"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Spinner
-        android:id="@+adicionarDespesa/spinnerTipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+adicionarDespesa/textView1"
-        android:layout_toRightOf="@+adicionarDespesa/btAdd" />
-
-    <TextView
-        android:id="@+adicionarDespesa/textoCategoria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+adicionarDespesa/valor"
-        android:layout_toLeftOf="@+adicionarDespesa/valor"
-        android:text="Categoria"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Spinner
-        android:id="@+adicionarDespesa/spinnerCategoria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+adicionarDespesa/textoCategoria"
-        android:layout_alignTop="@+adicionarDespesa/valor" />
-
-    <TextView
-        android:id="@+adicionarDespesa/textoTipo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+adicionarDespesa/editTextDescricao"
-        android:layout_toRightOf="@+adicionarDespesa/valor"
-        android:text="  Tipo"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+adicionarDespesa/textParcelas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+adicionarDespesa/valor"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:text="Numero de Parcelas"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+adicionarDespesa/editTextParcelas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+adicionarDespesa/btAdd"
-        android:layout_alignRight="@+adicionarDespesa/valor"
-        android:layout_below="@+adicionarDespesa/textParcelas"
-        android:inputType="number" >
-
-        <requestFocus />
-    </EditText>
 
 </RelativeLayout>

@@ -32,17 +32,14 @@ public class GerenciadorFinanceiro implements Serializable {
 		return listaDeTransacoes;
 	}
 	
-	public boolean adicionarDespesa(String data, double valor, String descricao, Tipo tipo, String categoria, int numeroDeParcelas) throws Exception{
-		Despesa addDespesa = new Despesa(data, valor, tipo, categoria, descricao);
-		addDespesa.setNumeroDeParcelas(numeroDeParcelas);
-		
+	public boolean adicionarDespesa(String data, double valor, String categoria, String descricao) throws Exception{
+		Transacao addDespesa = new Transacao(data, valor, "Despesa", categoria, descricao);	
 		return listaDeTransacoes.add(addDespesa);
 	}
 	
 	
-	public boolean adicionarReceita(String data, double valor, Tipo tipo, String descricao) throws Exception{
-		Receita addReceita = new Receita(data, valor, tipo, descricao);
-		
+	public boolean adicionarReceita(String data, double valor, String categoria, String descricao) throws Exception{
+		Transacao addReceita = new Transacao(data, valor, "Receita", categoria, descricao);	
 		return listaDeTransacoes.add(addReceita);
 	}
 	
@@ -103,19 +100,6 @@ public class GerenciadorFinanceiro implements Serializable {
 		return false;
 	}
 	
-	public boolean editarTipo(int idTransacao, Tipo tipo){
-		
-		Iterator<Transacao> it = listaDeTransacoes.iterator();
-		
-		while (it.hasNext()){
-			//TODO preciso verificar aqui se o objeto eh do tipo Receita ou Despesa para so depois 
-			// modificar o tipo ... sei que tem como, mas não lembro como faz
-				return true;
-			}
-		
-		return false;
-	}
-	
 	public boolean editarData(int idTransacao, String data){
 		
 		Iterator<Transacao> it = listaDeTransacoes.iterator();
@@ -142,5 +126,7 @@ public class GerenciadorFinanceiro implements Serializable {
 		
 		return false;
 	}
+	
+	
 	
 }
