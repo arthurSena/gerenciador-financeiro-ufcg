@@ -16,8 +16,10 @@ public class Transacao {
 	private String descricao;
 	private double valor;
 	private int id; 
+	private String categoria; 
+	private String tipo;
 	
-	public Transacao(String data, double valor) throws Exception {
+	public Transacao(String data, double valor, String tipo, String categoria) throws Exception {
 		
 		if (dataValida(data) == false) {
 			throw new Exception("Data invalida.");
@@ -25,17 +27,29 @@ public class Transacao {
 			throw new Exception("Valor invalido");
 		}
 		
+		this.tipo = tipo;
+		this.categoria = categoria;
 		this.data = data;
 		this.valor = valor;
 		this.descricao = "";
 		this.id = geraID();
 	}
 
-	public Transacao(String data, String descricao, double valor) throws Exception {	
-		this(data, valor);
+	public Transacao(String data, double valor, String tipo, String categoria, String descricao) throws Exception {	
+		this(data, valor, tipo, categoria);
 		this.descricao = descricao;
-	}
+		this.tipo = tipo;
+		this.categoria = categoria;
+	}	
 	
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
 	/**
 	 * Recupera a Data da Transacao
 	 * @return
@@ -107,9 +121,7 @@ public class Transacao {
 		} else {
 			dataCorreta = false;
 		}
-
 		return dataCorreta;
-
 	}
 
 	private boolean anoBissexto(String data) {
@@ -126,5 +138,22 @@ public class Transacao {
 			return false;
 		}
 		return true;
+	}
+	
+	/**
+	 * Recupera a categoria do Debito
+	 * @return
+	 *        Categoria do Debito
+	 */
+	public String getCategoria() {
+		return categoria;
+	}
+	
+	/**
+	 * Altera a Categoria do Débito  
+	 * @param categoria
+	 */
+	public void setCategoria(String categoria) {
+		this.categoria = categoria;
 	}
 }

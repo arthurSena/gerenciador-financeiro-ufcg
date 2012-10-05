@@ -23,7 +23,8 @@
         android:layout_marginBottom="54dp"
         android:text="@string/mesvisualizado"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
+
+
     <TableLayout
         android:id="@+main/tabela"
         android:layout_width="wrap_content"

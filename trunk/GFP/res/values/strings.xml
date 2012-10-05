@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="hello">Hello World, GFPActivity!</string>
+     <string name="hello">Hello World, GFPActivity!</string>
     <string name="app_name">GFP</string>
     <string name="descricao">Descricao</string>
     <string name="valor">Valor</string>
@@ -43,4 +43,6 @@
         <item>Mensalmente</item>
         <item>Unico</item>
     </string-array>
+    
+
 </resources>

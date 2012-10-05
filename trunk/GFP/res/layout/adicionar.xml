@@ -85,10 +85,10 @@
 
     <TextView
         android:id="@+adicionar/textoTipo"
-        android:layout_width="51dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Tipo"
+        android:text="   Categoria"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Spinner
