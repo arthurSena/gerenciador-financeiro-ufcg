@@ -60,6 +60,11 @@ public class Transacao {
 		return data;
 	}
 	
+	
+	public int getMes(){
+		return Integer.parseInt(data.split("/")[1]);
+	}
+	
 	/**
 	 * Recupera a Descricao da Transacao
 	 * @return
@@ -156,4 +161,36 @@ public class Transacao {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+	
+	/**
+	 * Diz se a transacao é uma receita
+	 * @return
+	 *       True, caso seja uma receita
+	 *       False, caso nao seja
+	 */
+	
+	public boolean isReceita(){
+		boolean resp = false;
+		if (this.tipo.trim()=="Receita".trim()){
+			resp = true;
+		}
+		return resp;
+		
+	}
+	
+	/**
+	 * Diz se a transacao é uma despesa
+	 * @return
+	 *     True, caso seja uma despesa
+	 *     False, caso nao seja
+	 */
+	
+	public boolean isDespesa(){
+		boolean resp = false;
+		if (this.tipo.trim()=="Despesa".trim()){
+			resp = true;
+		}
+		return resp;
+	}
+	
 }
