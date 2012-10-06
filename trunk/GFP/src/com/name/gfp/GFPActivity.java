@@ -13,6 +13,7 @@ import android.widget.TableRow;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -95,37 +96,66 @@ public class GFPActivity extends Activity {
 
 	}
 	
-	private void povoarTabela(){
-		int numeroLinhas = gerenciador.getListaDeTransacoes().size();
-		TableLayout tl = (TableLayout) findViewById(R.main.tabela);
+	private void povoarTabela(int numeroLinhas, int mes, TableLayout tl){
+//		tl.removeAllViews();
+		
+		
+		
 		if (numeroLinhas != 0){
 			for(int i = 0 ; i<numeroLinhas;i++){
-				TableRow linha = new TableRow(this);
-				linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-						 LayoutParams.WRAP_CONTENT));
-				
-				TextView tipo = new TextView(this);
-				TextView data = new TextView(this);
-				TextView categoria=new TextView(this);
-				TextView valor=new TextView(this);
-				
-				data.setText(this.gerenciador.getListaDeTransacoes().get(i).getData());
-				categoria.setText(this.gerenciador.getListaDeTransacoes().get(i).getCategoria());
-				valor.setText(String.valueOf(this.gerenciador.getListaDeTransacoes().get(i).getValor()));
-				tipo.setText(this.gerenciador.getListaDeTransacoes().get(i).getTipo());
-				
-				linha.addView(tipo);
-				linha.addView(data);
-				linha.addView(categoria);
-				linha.addView(valor);
-				tl.addView(linha, new TableLayout.LayoutParams(
-						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-				
-				
-			}
+//				if(this.gerenciador.getListaDeTransacoes().get(i).getMes() == mes){
+					TableRow linha = new TableRow(this);
+					linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+							 LayoutParams.WRAP_CONTENT));
+						
+					TextView tipo = new TextView(this);
+					TextView data = new TextView(this);
+					TextView categoria=new TextView(this);
+					TextView valor=new TextView(this);
+					
+					data.setText(this.gerenciador.getListaDeTransacoes().get(i).getData());
+					categoria.setText(this.gerenciador.getListaDeTransacoes().get(i).getCategoria());
+					valor.setText(String.valueOf(this.gerenciador.getListaDeTransacoes().get(i).getValor()));
+					tipo.setText(this.gerenciador.getListaDeTransacoes().get(i).getTipo());
+					
+					linha.addView(tipo);
+					linha.addView(data);
+					linha.addView(categoria);
+					linha.addView(valor);
+					tl.addView(linha, new TableLayout.LayoutParams(
+							LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+					
+					IDlinha = this.gerenciador.getListaDeTransacoes().get(i).getID();
+					
+					linha.setOnClickListener(new View.OnClickListener() {
+						
+						
+						public void onClick(View v) {
+							
+							showDialog(0);
+						}
+					});
+				}
+//			}
 		}
 	}
 	
+	private void editar(){
+		boolean tipo = gerenciador.getTransacao(IDlinha).isDespesa();
+		
+		String data = gerenciador.getTransacao(IDlinha).getData();
+		double valor = gerenciador.getTransacao(IDlinha).getValor();
+		String descricao = gerenciador.getTransacao(IDlinha).getDescricao();
+		String categoria = gerenciador.getTransacao(IDlinha).getCategoria();
+		
+		if (tipo){			
+			telaEditarDespesa(data, categoria, valor, descricao);
+		}else {
+			telaEditarReceita(data, categoria, valor, descricao);
+		}
+			
+		
+	}
 	
 	@Override
     protected Dialog onCreateDialog(int id) {
@@ -140,7 +170,7 @@ public class GFPActivity extends Activity {
                    .setTitle("O que deseja ???").setView(textEntryView)
                    .setPositiveButton("Editar", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                        	
+                        	editar();
                         	
 
                    }
@@ -162,9 +192,21 @@ public class GFPActivity extends Activity {
     }
 	
 	
+	private int getMes(String mesSelect){
+		String[] listaMeses = { "Janeiro", "Fevereiro", "Março", "Abril",
+				"Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro",
+				"Novembro", "Dezembro" };
+
+		for (int i = 0; i < listaMeses.length; i++) {
+			if (listaMeses[i].equals(mesSelect)) {
+				return i+1;
+			}
+		}return -1;
+	}
+	
 	public void telaPrincipal(){
 		setContentView(R.layout.main);
-		TableLayout tl = (TableLayout) findViewById(R.main.tabela);
+		final TableLayout tl = (TableLayout) findViewById(R.main.tabela);
 
 		/* Find Tablelayout defined in main.xml */
 		
@@ -184,44 +226,7 @@ public class GFPActivity extends Activity {
 		tr.addView(t2);
 		tr.addView(t3);
 		tr.addView(t4);
-
-		int numeroLinhas = gerenciador.getListaDeTransacoes().size();
-		if (numeroLinhas != 0){
-			for(int i = 0 ; i<numeroLinhas;i++){
-				TableRow linha = new TableRow(this);
-				linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-						 LayoutParams.WRAP_CONTENT));
-					
-				TextView tipo = new TextView(this);
-				TextView data = new TextView(this);
-				TextView categoria=new TextView(this);
-				TextView valor=new TextView(this);
-				
-				data.setText(this.gerenciador.getListaDeTransacoes().get(i).getData());
-				categoria.setText(this.gerenciador.getListaDeTransacoes().get(i).getCategoria());
-				valor.setText(String.valueOf(this.gerenciador.getListaDeTransacoes().get(i).getValor()));
-				tipo.setText(this.gerenciador.getListaDeTransacoes().get(i).getTipo());
-				
-				linha.addView(tipo);
-				linha.addView(data);
-				linha.addView(categoria);
-				linha.addView(valor);
-				tl.addView(linha, new TableLayout.LayoutParams(
-						LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-				
-				IDlinha = this.gerenciador.getListaDeTransacoes().get(i).getID();
-				
-				linha.setOnClickListener(new View.OnClickListener() {
-					
-					
-					public void onClick(View v) {
-						
-						showDialog(0);
-					}
-				});
-			}
-		}
-	
+		
 		// Spinner
 
 		Spinner sp = (Spinner) findViewById(R.main.spinner1);
@@ -230,7 +235,62 @@ public class GFPActivity extends Activity {
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		sp.setAdapter(adapter);
 		
+//		sp.setOnItemSelectedListener();
 		
+		//Selcao de mes...
+		final int mes = getMes(sp.getSelectedItem().toString());
+		final int numeroLinhas = gerenciador.getListaDeTransacoes().size();
+		povoarTabela(numeroLinhas, mes,  tl);
+		
+		
+				
+//				sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+//			        public void onItemSelected(AdapterView<?> arg0, View arg1,
+//				                int position, long id) {
+//				        	povoarTabela(numeroLinhas, mes, tl);			 
+//					 }
+//					public void onNothingSelected(AdapterView<?> arg0) {}
+//				});
+		
+	
+//		if (numeroLinhas != 0){
+//			for(int i = 0 ; i<numeroLinhas;i++){
+//				if(this.gerenciador.getListaDeTransacoes().get(i).getMes() == mes){
+//					TableRow linha = new TableRow(this);
+//					linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+//							 LayoutParams.WRAP_CONTENT));
+//						
+//					TextView tipo = new TextView(this);
+//					TextView data = new TextView(this);
+//					TextView categoria=new TextView(this);
+//					TextView valor=new TextView(this);
+//					
+//					data.setText(this.gerenciador.getListaDeTransacoes().get(i).getData());
+//					categoria.setText(this.gerenciador.getListaDeTransacoes().get(i).getCategoria());
+//					valor.setText(String.valueOf(this.gerenciador.getListaDeTransacoes().get(i).getValor()));
+//					tipo.setText(this.gerenciador.getListaDeTransacoes().get(i).getTipo());
+//					
+//					linha.addView(tipo);
+//					linha.addView(data);
+//					linha.addView(categoria);
+//					linha.addView(valor);
+//					tl.addView(linha, new TableLayout.LayoutParams(
+//							LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+//					
+//					IDlinha = this.gerenciador.getListaDeTransacoes().get(i).getID();
+//					
+//					linha.setOnClickListener(new View.OnClickListener() {
+//						
+//						
+//						public void onClick(View v) {
+//							
+//							showDialog(0);
+//						}
+//					});
+//				}
+//			}
+//		}
+
 		//POVOANDO A TABELA...
 		
 		
@@ -316,6 +376,124 @@ public class GFPActivity extends Activity {
 		});
 	}
 
+	private int positionCategoria(String categoria){		
+		if (categoria.equals("Alimentacao")){
+			return 0;
+		} 
+		if (categoria.equals("Lazer")){
+			return 1;
+		}
+		if (categoria.equals("Moradia")){
+			return 2;
+		}
+		if (categoria.equals("Salario")){
+			return 3;
+		}
+		if (categoria.equals("Saude")){
+			return 4;
+		}
+		if (categoria.equals("Transporte")){
+			return 5;
+		}
+		if (categoria.equals("Outros")){
+			return 6;
+		}
+		return 0;
+	}
+	
+	public void telaEditarReceita(String data, String categoria, double valor, String descricao) {
+		setContentView(R.layout.adicionar);
+
+		Spinner spinnerTipo = (Spinner) findViewById(R.adicionar.spinnerTipo);
+		ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+				this, R.array.categorias, android.R.layout.simple_spinner_item);
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerTipo.setAdapter(adapter2);
+
+		Button btEditar = (Button) findViewById(R.adicionar.btAdd);
+		
+		((EditText) findViewById(R.adicionar.editTextData)).setText(data);
+		((EditText) findViewById(R.adicionar.valor)).setText(new Double(valor).toString());
+		((EditText) findViewById(R.adicionar.editTextDescricao)).setText(descricao);
+		((Spinner) findViewById(R.adicionar.spinnerTipo)).setSelection(positionCategoria(categoria));
+
+
+		btEditar.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View arg0) {
+				String descricao = ((EditText) findViewById(R.adicionar.editTextDescricao))
+						.getText().toString();
+				Double valor = Double
+						.parseDouble(((EditText) findViewById(R.adicionar.valor))
+								.getText().toString());
+				String data = ((EditText) findViewById(R.adicionar.editTextData))
+						.getText().toString();
+				String categoria = ((Spinner) findViewById(R.adicionar.spinnerTipo))
+						.getSelectedItem().toString();
+
+					try {
+						gerenciador.adicionarReceita(data, valor, categoria, descricao);
+						gerenciador.excluirTransacao(IDlinha);
+						imprimirMensagem(
+								"Transacao editada",
+								"Sucesso");
+						telaPrincipal();
+						
+					} catch (Exception e) {
+						imprimirMensagem(e.getMessage(), "Ops...");
+					}
+
+			}
+		});
+
+	}
+	
+	public void telaEditarDespesa(String data, String categoria, double valor, String descricao){
+		setContentView(R.layout.adicionardespesa);
+		
+		Spinner spinnerCategoria = (Spinner) findViewById(R.adicionarDespesa.spinnerCategoria);
+		ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(
+				this, R.array.categorias, android.R.layout.simple_spinner_item);
+		adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerCategoria.setAdapter(adapter1);
+
+		Button editar = (Button) findViewById(R.adicionarDespesa.btAdd);
+		
+		((EditText) findViewById(R.adicionarDespesa.editTextData)).setText(data);
+		((EditText) findViewById(R.adicionarDespesa.valor)).setText(new Double(valor).toString());
+		((EditText) findViewById(R.adicionarDespesa.editTextDescricao)).setText(descricao);
+		((Spinner) findViewById(R.adicionarDespesa.spinnerCategoria)).setSelection(positionCategoria(categoria));
+
+		editar.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+
+				String data = ((EditText) findViewById(R.adicionarDespesa.editTextData))
+						.getText().toString();
+				double valor = Double
+						.parseDouble(((EditText) findViewById(R.adicionarDespesa.valor))
+								.getText().toString());
+				String descricao = ((EditText) findViewById(R.adicionarDespesa.editTextDescricao))
+						.getText().toString();
+			String categoria = ((Spinner) findViewById(R.adicionarDespesa.spinnerCategoria))
+						.getSelectedItem().toString();
+				
+					try {
+						gerenciador.adicionarDespesa(data, valor, categoria, descricao);
+						gerenciador.excluirTransacao(IDlinha);
+						imprimirMensagem(
+								"Transação editada",
+								"Sucesso");
+						telaPrincipal();
+						
+					} catch (Exception e) {
+						imprimirMensagem(e.getMessage(), "Ops...");
+					}
+
+			}
+		});
+	}
+	
 	public void telaAdicionarDespesa() {
 		setContentView(R.layout.adicionardespesa);
 
@@ -351,7 +529,7 @@ public class GFPActivity extends Activity {
 //								.getText().toString());
 				String categoria = ((Spinner) findViewById(R.adicionarDespesa.spinnerCategoria))
 						.getSelectedItem().toString();
-				;
+				
 
 //				if (tipo.toLowerCase().equals("fixo")) {
 					try {

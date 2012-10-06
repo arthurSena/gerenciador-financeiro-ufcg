@@ -128,5 +128,21 @@ public class GerenciadorFinanceiro implements Serializable {
 	}
 	
 	
+	public Transacao getTransacao(int idTransacao){
+		
+		Iterator<Transacao> it = listaDeTransacoes.iterator();
+		
+		while (it.hasNext()){
+			Transacao aux = it.next();
+			if (aux.getID() == idTransacao ){
+				return aux;
+			}
+		}
+		return null;
+	}
+	
+	
+	
+	
 	
 }
