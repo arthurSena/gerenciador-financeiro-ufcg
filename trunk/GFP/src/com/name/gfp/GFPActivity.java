@@ -26,84 +26,27 @@ public class GFPActivity extends Activity {
 
 	GerenciadorFinanceiro gerenciador = new GerenciadorFinanceiro();
 	int IDlinha = 0;
-
-//	TableLayout tl = (TableLayout) findViewById(R.main.tabela);
-	
+	Spinner sp = null;
+	TableLayout tl = null;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
 		 telaPrincipal();
-		
-		// TableRow tr1 = new TableRow(this);
-		// tr1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-		// LayoutParams.WRAP_CONTENT));
-		//
-		//
-		// TextView t4 = new TextView(this);
-		// t4.setText("Descricao1");
-		// TextView t5 = new TextView(this);
-		// t5.setText("Categoria1");
-		// TextView t6 = new TextView(this);
-		// t6.setText("   Valor1");
-		//
-		// tr1.addView(t4);
-		// tr1.addView(t5);
-		// tr1.addView(t6);
-		//
-		// TableRow tr2 = new TableRow(this);
-		// tr2.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-		// LayoutParams.WRAP_CONTENT));
-		//
-		//
-		// TextView t7 = new TextView(this);
-		// t7.setText("Descricao2");
-		// TextView t8 = new TextView(this);
-		// t8.setText("Categoria2");
-		// TextView t9 = new TextView(this);
-		// t9.setText("   Valor2");
-		//
-		// tr2.addView(t7);
-		// tr2.addView(t8);
-		// tr2.addView(t9);
-		//
-		// TableRow tr3 = new TableRow(this);
-		//
-		// tr3.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-		// LayoutParams.WRAP_CONTENT));
-		//
-		// TextView t10 = new TextView(this);
-		// t10.setText("Descricao3");
-		// TextView t11 = new TextView(this);
-		// t11.setText("Categoria3");
-		// TextView t12 = new TextView(this);
-		// t12.setText("   Valor3");
-		//
-		// tr3.addView(t10);
-		// tr3.addView(t11);
-		// tr3.addView(t12);
-		//
-		// tl.addView(tr1, new
-		// TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
-		// LayoutParams.WRAP_CONTENT));
-		// tl.addView(tr2, new
-		// TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
-		// LayoutParams.WRAP_CONTENT));
-		// tl.addView(tr3, new
-		// TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
-		// LayoutParams.WRAP_CONTENT));
-
 	}
 	
-	private void povoarTabela(int numeroLinhas, int mes, TableLayout tl){
-//		tl.removeAllViews();
-		
-		
-		
+	private void povoarTabela(int numeroLinhas, int mes, TableLayout tl){	
+		int numeroLinhasTabela = tl.getChildCount();
+		if (numeroLinhasTabela>1){
+			for (int i = 1; i < numeroLinhasTabela;  i++){
+				tl.removeViewAt(1);
+			
+			}
+		}
+
 		if (numeroLinhas != 0){
-			for(int i = 0 ; i<numeroLinhas;i++){
-//				if(this.gerenciador.getListaDeTransacoes().get(i).getMes() == mes){
+			for(int i = 0 ; i<numeroLinhas; i++){
+				if(this.gerenciador.getListaDeTransacoes().get(i).getMes() == mes){
 					TableRow linha = new TableRow(this);
 					linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 							 LayoutParams.WRAP_CONTENT));
@@ -136,7 +79,7 @@ public class GFPActivity extends Activity {
 						}
 					});
 				}
-//			}
+			}
 		}
 	}
 	
@@ -206,30 +149,29 @@ public class GFPActivity extends Activity {
 	
 	public void telaPrincipal(){
 		setContentView(R.layout.main);
-		final TableLayout tl = (TableLayout) findViewById(R.main.tabela);
+		tl = (TableLayout) findViewById(R.main.tabela);
 
 		/* Find Tablelayout defined in main.xml */
 		
-		final TextView t1 = new TextView(this);
+		TextView t1 = new TextView(this);
 		t1.setText("        Tipo   ");
 		TextView t2 = new TextView(this);
 		t2.setText("      Data   ");
 		TextView t3 = new TextView(this);
-		t3.setText("       Categoria");
+		t3.setText("    Categoria   ");
 		TextView t4 = new TextView(this);
-		t4.setText("         Valor");
+		t4.setText("       Valor  ");
 
 		TableRow tr = (TableRow) findViewById(R.main.linha1);
-//		tr.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-//				 LayoutParams.WRAP_CONTENT));
 		tr.addView(t1);
 		tr.addView(t2);
 		tr.addView(t3);
 		tr.addView(t4);
 		
+//		teste();
 		// Spinner
 
-		Spinner sp = (Spinner) findViewById(R.main.spinner1);
+		sp = (Spinner) findViewById(R.main.spinner1);
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
 				this, R.array.itens, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -237,125 +179,15 @@ public class GFPActivity extends Activity {
 		
 //		sp.setOnItemSelectedListener();
 		
-		//Selcao de mes...
-		final int mes = getMes(sp.getSelectedItem().toString());
 		final int numeroLinhas = gerenciador.getListaDeTransacoes().size();
-		povoarTabela(numeroLinhas, mes,  tl);
 		
-		
-				
-//				sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
-//			        public void onItemSelected(AdapterView<?> arg0, View arg1,
-//				                int position, long id) {
-//				        	povoarTabela(numeroLinhas, mes, tl);			 
-//					 }
-//					public void onNothingSelected(AdapterView<?> arg0) {}
-//				});
-		
-	
-//		if (numeroLinhas != 0){
-//			for(int i = 0 ; i<numeroLinhas;i++){
-//				if(this.gerenciador.getListaDeTransacoes().get(i).getMes() == mes){
-//					TableRow linha = new TableRow(this);
-//					linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-//							 LayoutParams.WRAP_CONTENT));
-//						
-//					TextView tipo = new TextView(this);
-//					TextView data = new TextView(this);
-//					TextView categoria=new TextView(this);
-//					TextView valor=new TextView(this);
-//					
-//					data.setText(this.gerenciador.getListaDeTransacoes().get(i).getData());
-//					categoria.setText(this.gerenciador.getListaDeTransacoes().get(i).getCategoria());
-//					valor.setText(String.valueOf(this.gerenciador.getListaDeTransacoes().get(i).getValor()));
-//					tipo.setText(this.gerenciador.getListaDeTransacoes().get(i).getTipo());
-//					
-//					linha.addView(tipo);
-//					linha.addView(data);
-//					linha.addView(categoria);
-//					linha.addView(valor);
-//					tl.addView(linha, new TableLayout.LayoutParams(
-//							LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-//					
-//					IDlinha = this.gerenciador.getListaDeTransacoes().get(i).getID();
-//					
-//					linha.setOnClickListener(new View.OnClickListener() {
-//						
-//						
-//						public void onClick(View v) {
-//							
-//							showDialog(0);
-//						}
-//					});
-//				}
-//			}
-//		}
-
-		//POVOANDO A TABELA...
-		
-		
-//		 TableRow tr1 = new TableRow(this);
-//				 tr1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-//				 LayoutParams.WRAP_CONTENT));
-//				
-//				
-//				 TextView t4 = new TextView(this);
-//				 t4.setText("Descricao1");
-//				 TextView t5 = new TextView(this);
-//				 t5.setText("Categoria1");
-//				 TextView t6 = new TextView(this);
-//				 t6.setText("   Valor1");
-//				
-//				 tr1.addView(t4);
-//				 tr1.addView(t5);
-//				 tr1.addView(t6);
-//				
-//				 TableRow tr2 = new TableRow(this);
-//				 tr2.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-//				 LayoutParams.WRAP_CONTENT));
-//				
-//				
-//				 TextView t7 = new TextView(this);
-//				 t7.setText("Descricao2");
-//				 TextView t8 = new TextView(this);
-//				 t8.setText("Categoria2");
-//				 TextView t9 = new TextView(this);
-//				 t9.setText("   Valor2");
-//				
-//				 tr2.addView(t7);
-//				 tr2.addView(t8);
-//				 tr2.addView(t9);
-//				
-//				 TableRow tr3 = new TableRow(this);
-//				
-//				 tr3.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-//				 LayoutParams.WRAP_CONTENT));
-//				
-//				 TextView t10 = new TextView(this);
-//				 t10.setText("Descricao3");
-//				 TextView t11 = new TextView(this);
-//				 t11.setText("Categoria3");
-//				 TextView t12 = new TextView(this);
-//				 t12.setText("   Valor3");
-//				
-//				 tr3.addView(t10);
-//				 tr3.addView(t11);
-//				 tr3.addView(t12);
-//				
-//				 tl.addView(tr1, new
-//				 TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
-//				 LayoutParams.WRAP_CONTENT));
-//				 tl.addView(tr2, new
-//				 TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
-//				 LayoutParams.WRAP_CONTENT));
-//				 tl.addView(tr3, new
-//				 TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
-//				 LayoutParams.WRAP_CONTENT));
-		
-		
-		
-		
-		
+				sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+			        public void onItemSelected(AdapterView<?> arg0, View arg1,
+				                int position, long id) {
+				        	povoarTabela(numeroLinhas, getMes(sp.getSelectedItem().toString()), tl);			 
+					 }
+					public void onNothingSelected(AdapterView<?> arg0) {}
+				});		
 
 		Button adicionarReceita = (Button) findViewById(R.main.adicionarReceita);
 
