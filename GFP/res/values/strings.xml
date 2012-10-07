@@ -11,6 +11,7 @@
     <string name="adicionar">Adicionar</string>
     <string name="voltar">Voltar</string>
      <string name="mesvisualizado">Mes sendo visualizado</string>
+    <string name="saldoMes">Saldo atual R$ 0,00</string>
     <string-array name="itens">
         <item>Janeiro</item>
         <item>Fevereiro</item>
