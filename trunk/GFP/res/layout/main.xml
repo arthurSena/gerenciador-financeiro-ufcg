@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
     android:background="@drawable/fundo2"
-    android:gravity="center"
+    android:gravity="right"
     android:orientation="vertical" >
 
     <Spinner
@@ -13,16 +13,6 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="165dp" />
-
-    <TextView
-        android:id="@+main/textoMes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+main/spinner1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="54dp"
-        android:text="@string/mesvisualizado"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 
     <TableLayout
@@ -57,5 +47,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="Adicionar Despesa" />
+
+    <TextView
+        android:id="@+main/saldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+main/spinner1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="49dp"
+        android:text="Saldo atual R$ 0,00"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>

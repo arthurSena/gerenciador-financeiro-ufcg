@@ -1,5 +1,6 @@
 package com.name.gfp;
 
+import android.R.bool;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -35,8 +36,15 @@ public class GFPActivity extends Activity {
 		 telaPrincipal();
 	}
 	
-	private void povoarTabela(int numeroLinhas, int mes, TableLayout tl){	
+	private void povoarTabela(int numeroLinhas, int mes, TableLayout tl){
+		TextView saldo = (TextView) findViewById(R.main.saldo);
 		int numeroLinhasTabela = tl.getChildCount();
+		boolean ehReceita;
+		double saldoTabela = 0, valorTransacao;
+		String tipoTransacao;
+		
+		saldo.setText("Saldo atual R$ 0,00");
+		
 		if (numeroLinhasTabela>1){
 			for (int i = 1; i < numeroLinhasTabela;  i++){
 				tl.removeViewAt(1);
@@ -56,10 +64,14 @@ public class GFPActivity extends Activity {
 					TextView categoria=new TextView(this);
 					TextView valor=new TextView(this);
 					
+					valorTransacao = this.gerenciador.getListaDeTransacoes().get(i).getValor();
+					tipoTransacao = this.gerenciador.getListaDeTransacoes().get(i).getTipo();
+					ehReceita = this.gerenciador.getListaDeTransacoes().get(i).isReceita();
+					
 					data.setText(this.gerenciador.getListaDeTransacoes().get(i).getData());
 					categoria.setText(this.gerenciador.getListaDeTransacoes().get(i).getCategoria());
-					valor.setText(String.valueOf(this.gerenciador.getListaDeTransacoes().get(i).getValor()));
-					tipo.setText(this.gerenciador.getListaDeTransacoes().get(i).getTipo());
+					valor.setText(String.valueOf(valorTransacao));
+					tipo.setText(tipoTransacao);
 					
 					linha.addView(tipo);
 					linha.addView(data);
@@ -67,6 +79,8 @@ public class GFPActivity extends Activity {
 					linha.addView(valor);
 					tl.addView(linha, new TableLayout.LayoutParams(
 							LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+					
+					saldoTabela = somaSaldoMes(saldoTabela, valorTransacao, ehReceita);
 					
 					IDlinha = this.gerenciador.getListaDeTransacoes().get(i).getID();
 					
@@ -80,8 +94,22 @@ public class GFPActivity extends Activity {
 					});
 				}
 			}
+			saldoTabela = somaSaldoMes(saldoTabela, 0, true);
+			saldo.setText("Saldo atual R$ " + saldoTabela );
+			saldoTabela = 0;
 		}
 	}
+	
+	private double somaSaldoMes(double saldoTabela, double valorTransacao, boolean ehReceita){
+		
+		if (ehReceita){
+			saldoTabela = saldoTabela + valorTransacao;
+		}else {
+			saldoTabela = saldoTabela - valorTransacao;
+		}
+		return saldoTabela;
+		
+	};
 	
 	private void editar(){
 		boolean tipo = gerenciador.getTransacao(IDlinha).isDespesa();
@@ -149,6 +177,8 @@ public class GFPActivity extends Activity {
 	
 	public void telaPrincipal(){
 		setContentView(R.layout.main);
+//		TextView saldo = (TextView) findViewById(R.main.saldo);
+		
 		tl = (TableLayout) findViewById(R.main.tabela);
 
 		/* Find Tablelayout defined in main.xml */
@@ -167,6 +197,8 @@ public class GFPActivity extends Activity {
 		tr.addView(t2);
 		tr.addView(t3);
 		tr.addView(t4);
+		
+		
 		
 //		teste();
 		// Spinner
@@ -189,6 +221,9 @@ public class GFPActivity extends Activity {
 					public void onNothingSelected(AdapterView<?> arg0) {}
 				});		
 
+		
+		
+		
 		Button adicionarReceita = (Button) findViewById(R.main.adicionarReceita);
 
 		adicionarReceita.setOnClickListener(new View.OnClickListener() {
