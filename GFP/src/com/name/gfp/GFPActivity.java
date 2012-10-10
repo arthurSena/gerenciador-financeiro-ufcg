@@ -23,6 +23,7 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 
 public class GFPActivity extends Activity {
+	private static final String TableLayout = null;
 	/** Called when the activity is first created. */
 
 	GerenciadorFinanceiro gerenciador = new GerenciadorFinanceiro();
@@ -56,8 +57,15 @@ public class GFPActivity extends Activity {
 			for(int i = 0 ; i<numeroLinhas; i++){
 				if(this.gerenciador.getListaDeTransacoes().get(i).getMes() == mes){
 					TableRow linha = new TableRow(this);
-					linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
-							 LayoutParams.WRAP_CONTENT));
+					if(i==0){
+						linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+								 LayoutParams.WRAP_CONTENT));
+					}
+					else{
+						linha.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+								LayoutParams.WRAP_CONTENT));
+					}
+					
 						
 					TextView tipo = new TextView(this);
 					TextView data = new TextView(this);
@@ -241,6 +249,14 @@ public class GFPActivity extends Activity {
 				telaAdicionarDespesa();
 			}
 		});
+		
+		Button telaDebitos = (Button) findViewById(R.main.telaDebitos);
+		
+		telaDebitos.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				telaDebitos();
+			}
+		});
 	}
 
 	private int positionCategoria(String categoria){		
@@ -267,6 +283,70 @@ public class GFPActivity extends Activity {
 		}
 		return 0;
 	}
+	
+	
+	public void telaDebitos(){
+		setContentView(R.layout.debitos);
+		
+		
+		Spinner spinnerDebitosCategoria = (Spinner) findViewById(R.debitos.spinnerCategorias);
+		ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
+				this, R.array.categorias, android.R.layout.simple_spinner_item);
+		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerDebitosCategoria.setAdapter(adapter2);
+		
+		TableLayout tabelaDebitos = (TableLayout) findViewById(R.debitos.tableLayout1); 
+
+		
+		TextView t1 = new TextView(this);
+		t1.setText("        Descricao   ");
+		TextView t2 = new TextView(this);
+		t2.setText("      Categoria   ");
+		TextView t3 = new TextView(this);
+		t3.setText("      Valor  ");
+
+		TableRow tr = (TableRow) findViewById(R.debitos.linha1);
+		tr.addView(t1);
+		tr.addView(t2);
+		tr.addView(t3);
+		povoarTabelaDebitos(tabelaDebitos, spinnerDebitosCategoria);
+		
+	}
+	
+	private void povoarTabelaDebitos(TableLayout tl, Spinner categorias){
+		
+		for(Transacao tr:gerenciador.getListaDeTransacoes()){
+			
+			if(tr.isDespesa()){
+				
+			//	if(tr.getCategoria().toLowerCase().trim().equals(categorias.getSelectedItem().toString().toLowerCase())){
+					TableRow linha = new TableRow(this);
+					linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+							 LayoutParams.WRAP_CONTENT));
+					
+					TextView descricao = new TextView(this);
+					TextView categoria = new TextView(this);
+					TextView valor = new TextView(this);
+					
+					descricao.setText(tr.getDescricao());
+					categoria.setText(tr.getCategoria());
+					valor.setText((new Double(tr.getValor())).toString());
+					
+					linha.addView(descricao);
+					linha.addView(categoria);
+					linha.addView(valor);
+					
+					tl.addView(linha, new TableLayout.LayoutParams(
+							LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+			//	}
+
+			}
+		}
+	}
+	
+	
+	
+	
 	
 	public void telaEditarReceita(String data, String categoria, double valor, String descricao) {
 		setContentView(R.layout.adicionar);

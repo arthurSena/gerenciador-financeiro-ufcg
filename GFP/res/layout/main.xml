@@ -17,8 +17,8 @@
 
     <TableLayout
         android:id="@+main/tabela"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_above="@+main/adicionarReceita"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
@@ -26,9 +26,10 @@
 
         <TableRow
         android:id="@+main/linha1"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" 
+        >
         </TableRow>
 
     </TableLayout>
@@ -57,5 +58,13 @@
         android:layout_marginBottom="49dp"
         android:text="Saldo atual R$ 0,00"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+main/telaDebitos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+main/tabela"
+        android:layout_alignParentLeft="true"
+        android:text="Tela Debitos" />
 
 </RelativeLayout>
