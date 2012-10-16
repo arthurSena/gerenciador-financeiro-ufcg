@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import android.widget.TableRow;
@@ -77,9 +78,9 @@ public class GFPActivity extends Activity {
 					ehReceita = this.gerenciador.getListaDeTransacoes().get(i).isReceita();
 					
 					data.setText(this.gerenciador.getListaDeTransacoes().get(i).getData());
-					categoria.setText(this.gerenciador.getListaDeTransacoes().get(i).getCategoria());
-					valor.setText(String.valueOf(valorTransacao));
-					tipo.setText(tipoTransacao);
+					categoria.setText("   "+this.gerenciador.getListaDeTransacoes().get(i).getCategoria());
+					valor.setText( "   "+ String.valueOf(valorTransacao));
+					tipo.setText("     "+tipoTransacao);
 					
 					linha.addView(tipo);
 					linha.addView(data);
@@ -198,15 +199,31 @@ public class GFPActivity extends Activity {
 		TextView t3 = new TextView(this);
 		t3.setText("    Categoria   ");
 		TextView t4 = new TextView(this);
-		t4.setText("       Valor  ");
+		t4.setText("       Valor         ");
+		
+		
+		t1.setBackgroundColor(Color.GRAY);
+		t1.setTextColor(Color.BLACK);
+		
+		t2.setBackgroundColor(Color.GRAY);
+		t2.setTextColor(Color.BLACK);
+		
+		t3.setBackgroundColor(Color.GRAY);
+		t3.setTextColor(Color.BLACK);
+		
+		t4.setBackgroundColor(Color.GRAY);
+		t4.setTextColor(Color.BLACK);
 
-		TableRow tr = (TableRow) findViewById(R.main.linha1);
+		TableRow tr = new TableRow(this);
+		tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+				LayoutParams.WRAP_CONTENT));
 		tr.addView(t1);
 		tr.addView(t2);
 		tr.addView(t3);
 		tr.addView(t4);
 		
-		
+		tl.addView(tr,new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT));
 		
 //		teste();
 		// Spinner
