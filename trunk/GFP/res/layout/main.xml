@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="fill_parent"
     android:background="@drawable/fundo2"
-    android:gravity="right"
+    android:gravity="left"
     android:orientation="vertical" >
 
     <Spinner
@@ -13,16 +13,14 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="165dp" />
-
-
+
     <TableLayout
         android:id="@+main/tabela"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@+main/adicionarReceita"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+main/spinner1" >
+        android:layout_below="@+main/spinner1"
+        android:layout_centerHorizontal="true" >
 
 <!--         <TableRow -->
 <!--         android:id="@+main/linha1" -->

@@ -31,6 +31,7 @@ public class GFPActivity extends Activity {
 	int IDlinha = 0;
 	Spinner sp = null;
 	TableLayout tl = null;
+	Spinner spinnerDebitosCategoria;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -50,7 +51,6 @@ public class GFPActivity extends Activity {
 		if (numeroLinhasTabela>1){
 			for (int i = 1; i < numeroLinhasTabela;  i++){
 				tl.removeViewAt(1);
-			
 			}
 		}
 
@@ -58,14 +58,14 @@ public class GFPActivity extends Activity {
 			for(int i = 0 ; i<numeroLinhas; i++){
 				if(this.gerenciador.getListaDeTransacoes().get(i).getMes() == mes){
 					TableRow linha = new TableRow(this);
-					if(i==0){
+				//	if(i==0){
 						linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 								 LayoutParams.WRAP_CONTENT));
-					}
-					else{
-						linha.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-								LayoutParams.WRAP_CONTENT));
-					}
+					//}
+//					else{
+//						linha.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+//								LayoutParams.WRAP_CONTENT));
+//					}
 					
 						
 					TextView tipo = new TextView(this);
@@ -80,14 +80,19 @@ public class GFPActivity extends Activity {
 					data.setText(this.gerenciador.getListaDeTransacoes().get(i).getData());
 					categoria.setText("   "+this.gerenciador.getListaDeTransacoes().get(i).getCategoria());
 					valor.setText( "   "+ String.valueOf(valorTransacao));
-					tipo.setText("     "+tipoTransacao);
+					tipo.setText("   "+tipoTransacao);
+					
+					tipo.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
+					data.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
+					categoria.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
+					valor.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
 					
 					linha.addView(tipo);
 					linha.addView(data);
 					linha.addView(categoria);
 					linha.addView(valor);
 					tl.addView(linha, new TableLayout.LayoutParams(
-							LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+							LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
 					
 					saldoTabela = somaSaldoMes(saldoTabela, valorTransacao, ehReceita);
 					
@@ -193,36 +198,41 @@ public class GFPActivity extends Activity {
 		/* Find Tablelayout defined in main.xml */
 		
 		TextView t1 = new TextView(this);
-		t1.setText("        Tipo   ");
+		t1.setText("    Tipo   ");
 		TextView t2 = new TextView(this);
-		t2.setText("      Data   ");
+		t2.setText("      Data     ");
 		TextView t3 = new TextView(this);
-		t3.setText("    Categoria   ");
+		t3.setText("    Categoria     ");
 		TextView t4 = new TextView(this);
-		t4.setText("       Valor         ");
+		t4.setText("       Valor     ");
 		
 		
 		t1.setBackgroundColor(Color.GRAY);
-		t1.setTextColor(Color.BLACK);
+		//t1.setTextColor(Color.BLACK);
+		t1.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
 		
 		t2.setBackgroundColor(Color.GRAY);
-		t2.setTextColor(Color.BLACK);
+		//t2.setTextColor(Color.BLACK);
+		t2.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
 		
 		t3.setBackgroundColor(Color.GRAY);
-		t3.setTextColor(Color.BLACK);
+		//t3.setTextColor(Color.BLACK);
+		t3.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
 		
 		t4.setBackgroundColor(Color.GRAY);
-		t4.setTextColor(Color.BLACK);
+//		t4.setTextColor(Color.BLACK);
+		t4.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
 
 		TableRow tr = new TableRow(this);
-		tr.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
+		tr.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 				LayoutParams.WRAP_CONTENT));
+
 		tr.addView(t1);
 		tr.addView(t2);
 		tr.addView(t3);
 		tr.addView(t4);
 		
-		tl.addView(tr,new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+		tl.addView(tr,new TableLayout.LayoutParams(LayoutParams.FILL_PARENT,
 				LayoutParams.WRAP_CONTENT));
 		
 //		teste();
@@ -305,38 +315,81 @@ public class GFPActivity extends Activity {
 	public void telaDebitos(){
 		setContentView(R.layout.debitos);
 		
+		final TableLayout tabelaDebitos = (TableLayout) findViewById(R.debitos.tableLayout1); 
 		
-		Spinner spinnerDebitosCategoria = (Spinner) findViewById(R.debitos.spinnerCategorias);
+		Button btVoltar = (Button) findViewById(R.debitos.btVoltar);
+		btVoltar.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				telaPrincipal();
+			}
+		});
+		
+		
+		spinnerDebitosCategoria = (Spinner) findViewById(R.debitos.spinnerCategorias);
 		ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(
 				this, R.array.categorias, android.R.layout.simple_spinner_item);
 		adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerDebitosCategoria.setAdapter(adapter2);
 		
-		TableLayout tabelaDebitos = (TableLayout) findViewById(R.debitos.tableLayout1); 
+		spinnerDebitosCategoria.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener(){
+	        public void onItemSelected(AdapterView<?> arg0, View arg1,
+		                int position, long id) {
+		        	povoarTabelaDebitos(tabelaDebitos, spinnerDebitosCategoria.getSelectedItem().toString());			 
+			 }
+			public void onNothingSelected(AdapterView<?> arg0) {}
+		});		
+		
 
 		
 		TextView t1 = new TextView(this);
-		t1.setText("        Descricao   ");
+		t1.setText("    Descricao       ");
 		TextView t2 = new TextView(this);
 		t2.setText("      Categoria   ");
 		TextView t3 = new TextView(this);
-		t3.setText("      Valor  ");
+		t3.setText("      Valor        ");
+		
+		t1.setBackgroundColor(Color.GRAY);
+//		t1.setTextColor(Color.BLACK);
+		t1.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
+		
+		t2.setBackgroundColor(Color.GRAY);
+//		t2.setTextColor(Color.BLACK);
+		t2.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
+		
+		t3.setBackgroundColor(Color.GRAY);
+//		t3.setTextColor(Color.BLACK);
+		t3.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
 
-		TableRow tr = (TableRow) findViewById(R.debitos.linha1);
+//		TableRow tr = (TableRow) findViewById(R.debitos.linha1);
+		TableRow tr = new TableRow(this);
+		
 		tr.addView(t1);
 		tr.addView(t2);
 		tr.addView(t3);
-		povoarTabelaDebitos(tabelaDebitos, spinnerDebitosCategoria);
+		
+		tabelaDebitos.addView(tr,new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT,
+				LayoutParams.WRAP_CONTENT));
+		
+		povoarTabelaDebitos(tabelaDebitos, spinnerDebitosCategoria.getSelectedItem().toString());
 		
 	}
 	
-	private void povoarTabelaDebitos(TableLayout tl, Spinner categorias){
+	private void povoarTabelaDebitos(TableLayout tl, String categorias){
 		
+//		int i = gerenciador.getListaDeTransacoes().size();
+		
+		if(tl.getChildCount()>1){
+			for (int i = 1; i < tl.getChildCount() + 1;  i++){
+				tl.removeViewAt(1);
+			}
+		}
+				
 		for(Transacao tr:gerenciador.getListaDeTransacoes()){
 			
 			if(tr.isDespesa()){
 				
-			//	if(tr.getCategoria().toLowerCase().trim().equals(categorias.getSelectedItem().toString().toLowerCase())){
+				if(tr.getCategoria().toLowerCase().trim().equals(categorias.toLowerCase())){
 					TableRow linha = new TableRow(this);
 					linha.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
 							 LayoutParams.WRAP_CONTENT));
@@ -347,7 +400,11 @@ public class GFPActivity extends Activity {
 					
 					descricao.setText(tr.getDescricao());
 					categoria.setText(tr.getCategoria());
-					valor.setText((new Double(tr.getValor())).toString());
+					valor.setText("   "+(new Double(tr.getValor())).toString());
+					
+					descricao.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
+					categoria.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
+					valor.setBackgroundDrawable(getResources().getDrawable(R.drawable.shape));
 					
 					linha.addView(descricao);
 					linha.addView(categoria);
@@ -355,7 +412,7 @@ public class GFPActivity extends Activity {
 					
 					tl.addView(linha, new TableLayout.LayoutParams(
 							LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
-			//	}
+				}
 
 			}
 		}

@@ -12,28 +12,32 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="96dp" />
-
-
-
-
+
     <TableLayout
         android:id="@+debitos/tableLayout1"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="fill_parent"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
         android:layout_below="@+debitos/spinnerCategorias"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="28dp" >
         
-        
-         <TableRow
-        android:id="@+debitos/linha1"
-       android:layout_width="fill_parent"
-          android:layout_height="wrap_content"
-        android:layout_weight="1" >
-        </TableRow>
+<!--          <TableRow -->
+<!--         android:id="@+debitos/linha1" -->
+<!--        android:layout_width="fill_parent" -->
+<!--           android:layout_height="wrap_content" -->
+<!--         android:layout_weight="1" > -->
+<!--         </TableRow> -->
 
     </TableLayout>
+
+    <Button
+        android:id="@+debitos/btVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+debitos/spinnerCategorias"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="41dp"
+        android:text="Voltar" />
 
 </RelativeLayout>
