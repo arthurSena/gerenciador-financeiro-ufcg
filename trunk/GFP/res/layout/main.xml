@@ -24,13 +24,13 @@
         android:layout_alignParentRight="true"
         android:layout_below="@+main/spinner1" >
 
-        <TableRow
-        android:id="@+main/linha1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" 
-        >
-        </TableRow>
+<!--         <TableRow -->
+<!--         android:id="@+main/linha1" -->
+<!--         android:layout_width="fill_parent" -->
+<!--         android:layout_height="wrap_content" -->
+<!--         android:layout_weight="1"  -->
+<!--         > -->
+<!--         </TableRow> -->
 
     </TableLayout>
 
