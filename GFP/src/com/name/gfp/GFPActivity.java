@@ -27,15 +27,22 @@ public class GFPActivity extends Activity {
 	private static final String TableLayout = null;
 	/** Called when the activity is first created. */
 
-	GerenciadorFinanceiro gerenciador = new GerenciadorFinanceiro();
+	GerenciadorFinanceiro gerenciador;
 	int IDlinha = 0;
 	Spinner sp = null;
 	TableLayout tl = null;
 	Spinner spinnerDebitosCategoria;
+	Persistencia pers = new Persistencia();
+	int temp = 0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		try {
+			gerenciador = pers.recuperarDados();
+		} catch (Exception e) {
+			gerenciador = new GerenciadorFinanceiro();
+		}
 		 telaPrincipal();
 	}
 	
@@ -142,6 +149,8 @@ public class GFPActivity extends Activity {
 		
 	}
 	
+	
+	
 	@Override
     protected Dialog onCreateDialog(int id) {
 
@@ -170,6 +179,25 @@ public class GFPActivity extends Activity {
                    }
               }).create(); //por fim criamos o AlertDialog depois de todo construído (título, layout, botões e ações)
 
+         case 1:
+        	  LayoutInflater factory2 = LayoutInflater.from(this);
+              final View textEntryView2 = factory2.inflate(R.layout.editardeletar, null); //passamos o XML criado
+              return new AlertDialog.Builder(GFPActivity.this)
+                   .setTitle("O que deseja ???").setView(textEntryView2)
+                   .setPositiveButton("Salvar Dados", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int whichButton) {
+                        	pers.salvarDados(gerenciador);
+                        	 dialog.cancel();
+                        	}
+              }).setNegativeButton("Deletar Dados", new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int whichButton) {
+                	   	pers.apagarDados();
+                	   	gerenciador = new GerenciadorFinanceiro();
+                	   	telaPrincipal();
+                	    dialog.cancel();
+                   }
+              }).create(); //por fim criamos o AlertDialog depois de todo construído (título, layout, botões e ações)
+ 
          }
 
          //Se o valor passado pelo parâmetro não for o da constante SHOW_DIALOG retornamos null
@@ -191,6 +219,7 @@ public class GFPActivity extends Activity {
 	
 	public void telaPrincipal(){
 		setContentView(R.layout.main);
+		
 //		TextView saldo = (TextView) findViewById(R.main.saldo);
 		
 		tl = (TableLayout) findViewById(R.main.tabela);
@@ -282,6 +311,15 @@ public class GFPActivity extends Activity {
 		telaDebitos.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				telaDebitos();
+			}
+		});
+		
+		
+		Button btOpcao = (Button) findViewById(R.main.btOpcao);
+		
+		btOpcao.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				showDialog(1);
 			}
 		});
 	}
@@ -684,6 +722,9 @@ public class GFPActivity extends Activity {
 		});
 
 	}
+	
+	
+	
 
 	/**
 	 * Imprime uma mensagem de ao usuário
