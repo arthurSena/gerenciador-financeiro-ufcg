@@ -11,8 +11,9 @@ import java.io.Serializable;
  * @author ARTHUR SENA, RODOLFO LIMA, BRUNNA AMORIM, ELIAS PAULINO
  */
 
-@SuppressWarnings("serial")
-public class GerenciadorFinanceiro implements Serializable {
+//@SuppressWarnings("serial")
+//public class GerenciadorFinanceiro implements Serializable {
+public class GerenciadorFinanceiro {
 	
 	List<Transacao> listaDeTransacoes;
 	
