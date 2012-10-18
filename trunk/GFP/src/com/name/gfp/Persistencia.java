@@ -12,7 +12,7 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import android.os.Environment;
 
-public class Persistencia {
+ public class Persistencia {
 
 	XStream xstream = new XStream();
 
@@ -32,6 +32,23 @@ public class Persistencia {
 			e.printStackTrace();
 		}
 	}
+	
+	public void salvarDados(List<Transacao> list) {
+		BufferedWriter writer;
+		try {
+			writer = new BufferedWriter(new FileWriter(Environment
+					.getExternalStorageDirectory().getName()
+					+ File.separatorChar
+					+ "gfp"
+					+ File.separatorChar
+					+ "dados.xml"));
+			String func = xstream.toXML(list);
+			writer.write(func);
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public GerenciadorFinanceiro recuperarDados() throws Exception {
 		XStream xstream = new XStream(new DomDriver()); 
@@ -42,6 +59,17 @@ public class Persistencia {
 				+ File.separatorChar
 				+ "dados.xml");
 		return ((GerenciadorFinanceiro) xstream.fromXML(reader)); 
+	}
+	
+	public List<Transacao> recuperarDados2() throws Exception {
+		XStream xstream = new XStream(new DomDriver()); 
+		FileReader reader = new FileReader(Environment
+				.getExternalStorageDirectory().getName()
+				+ File.separatorChar
+				+ "gfp"
+				+ File.separatorChar
+				+ "dados.xml");
+		return ((List<Transacao>) xstream.fromXML(reader)); 
 	}
 
 	public void apagarDados() {

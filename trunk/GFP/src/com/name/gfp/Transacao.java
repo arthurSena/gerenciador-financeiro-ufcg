@@ -34,6 +34,8 @@ public class Transacao {
 		this.descricao = "";
 		this.id = geraID();
 	}
+	
+	public Transacao(){}
 
 	public Transacao(String data, double valor, String tipo, String categoria, String descricao) throws Exception {	
 		this(data, valor, tipo, categoria);

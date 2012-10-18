@@ -27,7 +27,7 @@ public class GFPActivity extends Activity {
 	private static final String TableLayout = null;
 	/** Called when the activity is first created. */
 
-	GerenciadorFinanceiro gerenciador;
+	GerenciadorFinanceiro gerenciador = new GerenciadorFinanceiro();
 	int IDlinha = 0;
 	Spinner sp = null;
 	TableLayout tl = null;
@@ -39,7 +39,8 @@ public class GFPActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		try {
-			gerenciador = pers.recuperarDados();
+			gerenciador.listaDeTransacoes = pers.recuperarDados2();
+//			gerenciador = pers.recuperarDados();
 		} catch (Exception e) {
 			gerenciador = new GerenciadorFinanceiro();
 		}
@@ -186,7 +187,7 @@ public class GFPActivity extends Activity {
                    .setTitle("O que deseja ???").setView(textEntryView2)
                    .setPositiveButton("Salvar Dados", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int whichButton) {
-                        	pers.salvarDados(gerenciador);
+                        	pers.salvarDados(gerenciador.listaDeTransacoes);
                         	 dialog.cancel();
                         	}
               }).setNegativeButton("Deletar Dados", new DialogInterface.OnClickListener() {
