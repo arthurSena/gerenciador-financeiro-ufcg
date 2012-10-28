@@ -1,12 +1,12 @@
 package com.name.gfp;
 
-import android.R.bool;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
+
 import android.content.DialogInterface;
-import android.content.Intent;
+
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -417,9 +417,9 @@ public class GFPActivity extends Activity {
 	private void povoarTabelaDebitos(TableLayout tl, String categorias){
 		
 //		int i = gerenciador.getListaDeTransacoes().size();
-		
-		if(tl.getChildCount()>1){
-			for (int i = 1; i < tl.getChildCount() + 1;  i++){
+		int numLinhas = tl.getChildCount();
+		if(numLinhas>1){
+			for (int i = 1; i < numLinhas;  i++){
 				tl.removeViewAt(1);
 			}
 		}

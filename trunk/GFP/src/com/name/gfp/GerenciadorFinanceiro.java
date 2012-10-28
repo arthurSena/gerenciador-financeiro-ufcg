@@ -3,7 +3,7 @@ package com.name.gfp;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.io.Serializable;
+
 
 /**
  * Classe responsavel pelo gerenciamento financeiro do usuario
