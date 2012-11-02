@@ -134,6 +134,7 @@ public class GFPActivity extends Activity {
 	};
 	
 	private void editar(){
+		try{
 		boolean tipo = gerenciador.getTransacao(IDlinha).isDespesa();
 		
 		String data = gerenciador.getTransacao(IDlinha).getData();
@@ -146,7 +147,10 @@ public class GFPActivity extends Activity {
 		}else {
 			telaEditarReceita(data, categoria, valor, descricao);
 		}
-			
+		}
+		catch (Exception e) {
+			imprimirMensagem(e.getMessage(), "Erro");
+		}
 		
 	}
 	
@@ -171,7 +175,12 @@ public class GFPActivity extends Activity {
                    }
               }).setNegativeButton("Deletar", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int whichButton) {
-                	   gerenciador.excluirTransacao(IDlinha);
+                	   try {
+						gerenciador.excluirTransacao(IDlinha);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
                 	   imprimirMensagem("Deletado", "Sucesso");
                 	   telaPrincipal();
                 	  dialog.cancel();

@@ -20,10 +20,23 @@ public class Transacao {
 	
 	public Transacao(String data, double valor, String tipo, String categoria) throws Exception {
 		
+		if(data == null){
+			throw new Exception("Data nao pode ser nulo");
+		}
+
 		if (dataValida(data) == false) {
 			throw new Exception("Data invalida.");
 		} else if (valor < 0) {
 			throw new Exception("Valor invalido");
+		}
+		else if(tipo == null){
+			throw new Exception("Tipo nao pode ser nulo");
+		}
+		else if(categoria== null){
+			throw new Exception("Categoria nao pode ser nulo");
+		}
+		else if(data == null){
+			throw new Exception("Data nao pode ser nulo");
 		}
 		
 		this.tipo = tipo;
@@ -38,6 +51,9 @@ public class Transacao {
 
 	public Transacao(String data, double valor, String tipo, String categoria, String descricao) throws Exception {	
 		this(data, valor, tipo, categoria);
+		if(descricao == null){
+			throw new Exception("Descricao nao pode ser nulo");
+		}
 		this.descricao = descricao;
 		this.tipo = tipo;
 		this.categoria = categoria;
